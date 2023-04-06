@@ -50,6 +50,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private  fun removeZeroAfterDot(result: String) : String {
+        var value = result
+        if (result.contains(".0"))
+            value = result.substring(0,result.length - 2)
+        return value
+    }
     private  fun isOperatorAdded(value: String) : Boolean{
       return if (value.startsWith("-")){
           false
@@ -81,7 +87,40 @@ class MainActivity : AppCompatActivity() {
                         one = prefix + one
                     }
                     //var result =
-                    tvInput?.text = (one.toDouble() - two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() - two.toDouble()).toString())
+                } else if (tvValue.contains("+")){
+                    val splitValue = tvValue.split("+")
+
+                    var one = splitValue[0] // 99
+                    var two = splitValue[1] // 1
+
+                    if (prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    //var result =
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() + two.toDouble()).toString())
+                } else if (tvValue.contains("/")){
+                    val splitValue = tvValue.split("/")
+
+                    var one = splitValue[0] // 99
+                    var two = splitValue[1] // 1
+
+                    if (prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    //var result =
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() / two.toDouble()).toString())
+                } else if (tvValue.contains("*")){
+                    val splitValue = tvValue.split("*")
+
+                    var one = splitValue[0] // 99
+                    var two = splitValue[1] // 1
+
+                    if (prefix.isNotEmpty()){
+                        one = prefix + one
+                    }
+                    //var result =
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() * two.toDouble()).toString())
                 }
 
 
