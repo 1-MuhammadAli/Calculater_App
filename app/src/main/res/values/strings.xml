@@ -17,6 +17,7 @@
     <string name="_multiply">*</string>
     <string name="clr">CLR</string>
     <string name="equal">=</string>
+    <string name="dot">.</string>
 
 
 </resources>
